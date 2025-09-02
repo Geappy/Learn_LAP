@@ -1,14 +1,17 @@
 class Deck {
   final String id;
-  final String ownerId;
-  final String title;
-  final bool isPublic;
-  Deck({required this.id, required this.ownerId, required this.title, this.isPublic = false});
+  final String name;
+  final String description;
+
+  Deck({
+    required this.id,
+    required this.name,
+    this.description = '',
+  });
 
   factory Deck.fromMap(Map m) => Deck(
-    id: m['id'],
-    ownerId: m['owner_id'],
-    title: m['title'],
-    isPublic: (m['is_public'] ?? false) as bool,
+    id: m['id'] as String,
+    name: m['name'] as String,
+    description: (m['description'] ?? '') as String,
   );
 }

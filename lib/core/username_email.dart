@@ -1,1 +1,1 @@
-String usernameToEmail(String username) => '${username.trim().toLowerCase()}@app.local';
+String usernameToEmail(String username) => '${username.trim().toLowerCase()}@app.localhost';
