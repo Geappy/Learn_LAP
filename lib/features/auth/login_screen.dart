@@ -28,13 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (username.isEmpty) throw Exception('Username required.');
       if (password.isEmpty) throw Exception('Password required.');
 
-      final auth = AuthRepo();
-      final exists = await auth.hasAccount(username);
-      if (!exists) {
-        throw Exception('No account found. Please register first.');
-      }
-
-      await auth.signIn(username: username, password: password);
+      await AuthRepo().signIn(username: username, password: password);
 
       if (!mounted) return;
       Navigator.of(context).pushReplacement(

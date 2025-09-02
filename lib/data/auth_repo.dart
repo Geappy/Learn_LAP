@@ -15,17 +15,6 @@ class AuthRepo {
     return row == null; // available if no profile with that username
   }
 
-  // lib/data/auth_repo.dart
-  Future<bool> hasAccount(String username) async {
-    final u = username.trim().toLowerCase();
-    final row = await AppSupabase.client
-        .from('profiles')
-        .select('id')
-        .eq('username', u)
-        .maybeSingle();
-    return row != null; // true if a profile exists for that username
-  }
-
   Future<AuthResponse> signIn({required String username, required String password}) {
     final email = usernameToEmail(username);
     return _auth.signInWithPassword(email: email, password: password);
